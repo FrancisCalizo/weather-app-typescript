@@ -3,12 +3,14 @@ import { format } from 'date-fns';
 
 import CurrentWeather from './components/CurrentWeather';
 import Location from './components/Location';
+import SearchBar from './components/SearchBar';
 
 function App() {
   const [today, setToday] = useState('');
   const [weatherData, setWeatherData] = useState<IWeatherData>(null);
   const [forecasts, setForecasts] = useState<IForecasts>(null);
   const [city, setCity] = useState<string>('Miami');
+  const [searchInput, setSearchInput] = useState('');
 
   // Get Today's Date
   useEffect(() => {
@@ -45,6 +47,7 @@ function App() {
         forecasts={forecasts}
         today={today}
       />
+      <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
     </div>
   );
 }

@@ -47,10 +47,10 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
   } else {
     return (
       <div>
-        <span>{temperature}&#176;</span>
-        <span>{weatherData.weather.description}</span>
-        <span>Low:{low}</span>
-        <span>Low:{high}</span>
+        <div>{temperature}&#176;</div>
+        <div>{weatherData.weather.description}</div>
+        <div>Low:{low}</div>
+        <div>Low:{high}</div>
       </div>
     );
   }

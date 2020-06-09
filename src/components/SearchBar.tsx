@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
-const SearchBar = () => {
+interface Props {
+  searchInput: string;
+  setSearchInput: (input: string) => void;
+}
+
+const SearchBar: React.FC<Props> = ({ searchInput, setSearchInput }) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+
   return (
-    <div>
-      <h2>SearchBar</h2>
-    </div>
+    <form>
+      <input
+        type="text"
+        placeholder="Enter a location"
+        value={searchInput}
+        onChange={handleChange}
+      />
+      <button type="submit">Search</button>
+    </form>
   );
 };
 
