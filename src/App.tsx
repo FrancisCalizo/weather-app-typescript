@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import CurrentWeather from './components/CurrentWeather';
 import Location from './components/Location';
 import SearchBar from './components/SearchBar';
+import WeeklyForecast from './components/WeeklyForecast';
 
 function App() {
   const [today, setToday] = useState('');
@@ -64,6 +65,7 @@ function App() {
         setSearchInput={setSearchInput}
         setSearchCity={setSearchCity}
       />
+      <WeeklyForecast forecasts={forecasts} />
     </div>
   );
 }
