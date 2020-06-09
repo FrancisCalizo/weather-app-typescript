@@ -25,7 +25,7 @@ function App() {
     )
       .then((res) => {
         if (res.status === 200) {
-          setLocation(searchCity);
+          setLocation(searchCity.toLowerCase());
           return res.json();
         }
       })

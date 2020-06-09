@@ -1,4 +1,5 @@
 import React from 'react';
+import CSS from 'csstype';
 
 interface Props {
   location: string;
@@ -7,9 +8,13 @@ interface Props {
 const Location: React.FC<Props> = ({ location }) => {
   return (
     <div>
-      <h1>{location}</h1>
+      <h1 style={styles}>{location}</h1>
     </div>
   );
+};
+
+const styles: CSS.Properties = {
+  textTransform: 'capitalize',
 };
 
 export default Location;
