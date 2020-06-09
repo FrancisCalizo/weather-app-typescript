@@ -25,6 +25,9 @@ function App() {
       .then((res) => res.json())
       .then((res) => {
         setWeatherData(res.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, [city]);
 
@@ -36,6 +39,9 @@ function App() {
       .then((res) => res.json())
       .then((res) => {
         setForecasts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, [city]);
 
@@ -47,7 +53,11 @@ function App() {
         forecasts={forecasts}
         today={today}
       />
-      <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
+      <SearchBar
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        setCity={setCity}
+      />
     </div>
   );
 }
