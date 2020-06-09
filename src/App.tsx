@@ -40,7 +40,11 @@ function App() {
   return (
     <div>
       <Location city={city} />
-      <CurrentWeather weatherData={weatherData} forecasts={forecasts} />
+      <CurrentWeather
+        weatherData={weatherData}
+        forecasts={forecasts}
+        today={today}
+      />
     </div>
   );
 }

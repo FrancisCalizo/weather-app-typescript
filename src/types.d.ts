@@ -2,6 +2,8 @@ type IWeatherData = WeatherData | null;
 
 type IForecasts = Forecast[] | null;
 
+type IForecast = Forecast | null;
+
 type Forecast = {
   moonrise_ts: number;
   wind_cdir: string;
