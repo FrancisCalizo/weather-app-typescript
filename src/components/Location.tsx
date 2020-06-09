@@ -1,13 +1,13 @@
 import React from 'react';
 
 interface Props {
-  city: string;
+  location: string;
 }
 
-const Location: React.FC<Props> = ({ city }) => {
+const Location: React.FC<Props> = ({ location }) => {
   return (
     <div>
-      <h1>{city}</h1>
+      <h1>{location}</h1>
     </div>
   );
 };
