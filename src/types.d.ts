@@ -97,3 +97,5 @@ type WeatherData = {
   elev_angle: number;
   app_temp: number;
 };
+
+type Day = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | 'Sun' | '';
