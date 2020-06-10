@@ -36,7 +36,7 @@ function App() {
       .then((res) => {
         setWeatherData(res.data[0]);
         setLocation({
-          city: searchCity.toLowerCase(),
+          city: res.data[0].city_name.toLowerCase(),
           state: res.data[0].state_code,
           country: res.data[0].country_code,
         });
