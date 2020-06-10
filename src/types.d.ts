@@ -4,6 +4,12 @@ type IForecasts = Forecast[] | null;
 
 type IForecast = Forecast | null;
 
+type ILocation = {
+  city: string;
+  state: string;
+  country: string;
+};
+
 type Forecast = {
   moonrise_ts: number;
   wind_cdir: string;

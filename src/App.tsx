@@ -8,7 +8,11 @@ import WeeklyForecast from './components/WeeklyForecast';
 
 function App() {
   const [today, setToday] = useState('');
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState({
+    city: 'Miami',
+    state: 'FL',
+    country: 'US',
+  });
   const [weatherData, setWeatherData] = useState<IWeatherData>(null);
   const [forecasts, setForecasts] = useState<IForecasts>(null);
   const [searchCity, setSearchCity] = useState<string>('Miami');
@@ -26,12 +30,16 @@ function App() {
     )
       .then((res) => {
         if (res.status === 200) {
-          setLocation(searchCity.toLowerCase());
           return res.json();
         }
       })
       .then((res) => {
         setWeatherData(res.data[0]);
+        setLocation({
+          city: searchCity.toLowerCase(),
+          state: res.data[0].state_code,
+          country: res.data[0].country_code,
+        });
       })
       .catch((err) => {
         alert(`Unable to find location "${searchCity}"`);
