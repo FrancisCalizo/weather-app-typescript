@@ -1,4 +1,6 @@
 import React from 'react';
+import { getDay } from 'date-fns';
+
 import CSS from 'csstype';
 
 interface Props {
@@ -9,6 +11,7 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
     <div style={styles}>
       <div>Date: {forecast?.datetime}</div>
+      <div>Day of Week: {getDay(new Date(forecast?.datetime!))} </div>
       <div>Forecast: {forecast?.weather.description}</div>
       <div>High: {Math.round(forecast!.max_temp * (9 / 5) + 32)}</div>
       <div>Low: {Math.round(forecast!.min_temp * (9 / 5) + 32)}</div>
