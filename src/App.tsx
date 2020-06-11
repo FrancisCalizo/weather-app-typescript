@@ -19,6 +19,7 @@ function App() {
   const [forecasts, setForecasts] = useState<Forecasts>([]);
   const [searchCity, setSearchCity] = useState<string>('Miami');
   const [searchInput, setSearchInput] = useState('');
+  const [loading, setLoading] = useState(false);
 
   // Get Today's Date
   useEffect(() => {
@@ -62,7 +63,16 @@ function App() {
       });
   }, [searchCity]);
 
-  if (Object.keys(weatherData).length === 0) {
+  // Check Loading State
+  useEffect(() => {
+    if (Object.keys(weatherData).length === 0 || forecasts.length === 0) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [forecasts, weatherData]);
+
+  if (loading) {
     return <h2>Loading...</h2>;
   } else {
     return (
