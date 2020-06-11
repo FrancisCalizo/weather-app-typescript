@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDay } from 'date-fns';
+import { getDay, format } from 'date-fns';
 
 import useDayOfWeek from './hooks/useDayOfWeek';
 
@@ -13,6 +13,9 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
     <div style={styles}>
       <div>Date: {forecast?.datetime}</div>
+      <div>
+        Date: {format(new Date(forecast?.datetime.replace(/-/g, '/')), 'MMM d')}
+      </div>
       <div>
         Day of Week: {useDayOfWeek(getDay(new Date(forecast?.datetime!)))}{' '}
       </div>
