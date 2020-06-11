@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getDay, format } from 'date-fns';
 
 import useDayOfWeek from './hooks/useDayOfWeek';
+import useFahrenheit from './hooks/useFahrenheit';
 
 interface Props {
   weatherData: WeatherData;
@@ -10,18 +11,11 @@ interface Props {
 }
 
 const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
-  const [temperature, setTemperature] = useState(0);
   const [todaysForecast, setTodaysForecast] = useState<Forecast>(
     {} as Forecast
   );
   const [low, setLow] = useState<number>(0);
   const [high, setHigh] = useState<number>(0);
-
-  // Get Current Conditions
-  useEffect(() => {
-    let tempInFarenheight = Math.round(weatherData.temp * (9 / 5) + 32);
-    setTemperature(tempInFarenheight);
-  }, [weatherData]);
 
   // Get Projected Data
   useEffect(() => {
@@ -43,7 +37,7 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
 
   return (
     <div>
-      <div>{temperature}&#176;</div>
+      <div>{useFahrenheit(weatherData.temp)}&#176;</div>
       <div>{weatherData.weather?.description}</div>
       <div>Low:{low}</div>
       <div>Low:{high}</div>
