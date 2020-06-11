@@ -14,8 +14,6 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
   const [todaysForecast, setTodaysForecast] = useState<Forecast>(
     {} as Forecast
   );
-  const [low, setLow] = useState<number>(0);
-  const [high, setHigh] = useState<number>(0);
 
   // Get Projected Data
   useEffect(() => {
@@ -26,21 +24,12 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
     setTodaysForecast(todaysCast[0]);
   }, [forecasts, today]);
 
-  // Set Low and High Temperature
-  useEffect(() => {
-    let todaysLow = Math.round(todaysForecast!.min_temp * (9 / 5) + 32);
-    let todaysHigh = Math.round(todaysForecast!.max_temp * (9 / 5) + 32);
-
-    setLow(todaysLow);
-    setHigh(todaysHigh);
-  }, [todaysForecast]);
-
   return (
     <div>
       <div>{useFahrenheit(weatherData.temp)}&#176;</div>
       <div>{weatherData.weather?.description}</div>
-      <div>Low:{low}</div>
-      <div>Low:{high}</div>
+      <div>Low:{useFahrenheit(todaysForecast!.min_temp)}</div>
+      <div>High{useFahrenheit(todaysForecast!.max_temp)}</div>
       <div>
         Date:
         {weatherData.ob_time &&

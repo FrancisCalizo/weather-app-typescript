@@ -11,14 +11,12 @@ const WeeklyForecast: React.FC<Props> = ({ forecasts }) => {
   const [weeklyForecasts, setWeeklyForecasts] = useState<Forecasts>([]);
 
   useEffect(() => {
-    if (forecasts) {
-      const days = [1, 2, 3, 4, 5];
-      const fiveDayForecast = forecasts!.filter((forecast, idx) =>
-        days.includes(idx)
-      );
+    const days = [1, 2, 3, 4, 5];
+    const fiveDayForecast = forecasts!.filter((forecast, idx) =>
+      days.includes(idx)
+    );
 
-      setWeeklyForecasts(fiveDayForecast);
-    }
+    setWeeklyForecasts(fiveDayForecast);
   }, [forecasts]);
 
   return (
