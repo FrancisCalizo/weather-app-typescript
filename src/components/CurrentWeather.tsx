@@ -47,9 +47,10 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
   return (
     <div>
       <div>{temperature}&#176;</div>
-      <div>{weatherData?.weather?.description}</div>
+      <div>{weatherData.weather?.description}</div>
       <div>Low:{low}</div>
       <div>Low:{high}</div>
+      <div>Day:{weatherData.ob_time?.split(' ')[0]}</div>
     </div>
   );
 };
