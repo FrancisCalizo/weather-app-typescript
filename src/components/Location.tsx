@@ -8,7 +8,7 @@ interface Props {
 const Location: React.FC<Props> = ({ location }) => {
   return (
     <div>
-      <h1 style={styles}>{location.city}</h1>
+      <h1 style={styles}>{`${location.city}, ${location.state}`}</h1>
     </div>
   );
 };

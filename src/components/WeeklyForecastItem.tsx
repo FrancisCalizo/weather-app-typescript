@@ -13,7 +13,6 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
     <div style={styles}>
       <div>Date: {forecast?.datetime}</div>
-      <div>Day of Week: {getDay(new Date(forecast?.datetime!))} </div>
       <div>
         Day of Week: {useDayOfWeek(getDay(new Date(forecast?.datetime!)))}{' '}
       </div>
