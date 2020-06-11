@@ -13,8 +13,10 @@ function App() {
     state: 'FL',
     country: 'US',
   });
-  const [weatherData, setWeatherData] = useState<IWeatherData>(null);
-  const [forecasts, setForecasts] = useState<IForecasts>(null);
+  const [weatherData, setWeatherData] = useState<WeatherData>(
+    {} as WeatherData
+  );
+  const [forecasts, setForecasts] = useState<Forecasts>([]);
   const [searchCity, setSearchCity] = useState<string>('Miami');
   const [searchInput, setSearchInput] = useState('');
 

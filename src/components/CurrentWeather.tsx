@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
 interface Props {
-  weatherData: IWeatherData;
-  forecasts: IForecasts;
+  weatherData: WeatherData;
+  forecasts: Forecasts;
   today: string;
 }
 
 const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
   const [temperature, setTemperature] = useState(0);
-  const [todaysForecast, setTodaysForecast] = useState<IForecast>(null);
+  const [todaysForecast, setTodaysForecast] = useState<Forecast>(
+    {} as Forecast
+  );
   const [low, setLow] = useState<number>(0);
   const [high, setHigh] = useState<number>(0);
 
@@ -42,18 +44,14 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
     }
   }, [todaysForecast]);
 
-  if (!weatherData) {
-    return <p>Loading...</p>;
-  } else {
-    return (
-      <div>
-        <div>{temperature}&#176;</div>
-        <div>{weatherData.weather.description}</div>
-        <div>Low:{low}</div>
-        <div>Low:{high}</div>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <div>{temperature}&#176;</div>
+      <div>{weatherData?.weather?.description}</div>
+      <div>Low:{low}</div>
+      <div>Low:{high}</div>
+    </div>
+  );
 };
 
 export default CurrentWeather;

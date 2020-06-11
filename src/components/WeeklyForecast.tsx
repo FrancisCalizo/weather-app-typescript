@@ -4,11 +4,11 @@ import CSS from 'csstype';
 import WeeklyForecastItem from './WeeklyForecastItem';
 
 interface Props {
-  forecasts: IForecasts;
+  forecasts: Forecasts;
 }
 
 const WeeklyForecast: React.FC<Props> = ({ forecasts }) => {
-  const [weeklyForecasts, setWeeklyForecasts] = useState<IForecasts>(null);
+  const [weeklyForecasts, setWeeklyForecasts] = useState<Forecasts>([]);
 
   useEffect(() => {
     if (forecasts) {

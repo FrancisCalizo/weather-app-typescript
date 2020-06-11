@@ -7,25 +7,25 @@ const useDayOfWeek = (dayNumber: number): Day => {
     // Get Day of Week Name From Number
     switch (dayNumber) {
       case 0:
-        setDayOfWeek('Sun');
-        break;
-      case 1:
         setDayOfWeek('Mon');
         break;
-      case 2:
+      case 1:
         setDayOfWeek('Tue');
         break;
-      case 3:
+      case 2:
         setDayOfWeek('Wed');
         break;
-      case 4:
+      case 3:
         setDayOfWeek('Thu');
         break;
-      case 5:
+      case 4:
         setDayOfWeek('Fri');
         break;
-      case 6:
+      case 5:
         setDayOfWeek('Sat');
+        break;
+      case 6:
+        setDayOfWeek('Sun');
         break;
       default:
         setDayOfWeek('');

@@ -1,8 +1,4 @@
-type IWeatherData = WeatherData | null;
-
-type IForecasts = Forecast[] | null;
-
-type IForecast = Forecast | null;
+type Forecasts = Forecast[];
 
 type ILocation = {
   city: string;

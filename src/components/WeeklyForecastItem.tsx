@@ -6,7 +6,7 @@ import useDayOfWeek from './hooks/useDayOfWeek';
 import CSS from 'csstype';
 
 interface Props {
-  forecast: IForecast;
+  forecast: Forecast;
 }
 
 const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {

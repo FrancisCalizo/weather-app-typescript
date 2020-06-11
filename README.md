@@ -7,3 +7,5 @@
 - Custom Hooks Usage - https://reactjs.org/docs/hooks-custom.html | https://www.youtube.com/watch?v=5JSigy8E6vk | https://www.youtube.com/watch?v=yu3dnHrnps4
 
 - Rules of Hooks - https://reactjs.org/docs/hooks-rules.html
+
+- Less conditional Statements for returning JSX in functional components - Found a way to Return Components without so many conditional statements. Initial States should not be null, but Arrays or Objects. Start of with empty objects or arrays with type assertion. Then if trying to output properties or arrays, then using conditional operator (?) for variables.
