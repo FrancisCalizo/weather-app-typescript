@@ -16,7 +16,7 @@ function App() {
   const [weatherData, setWeatherData] = useState<WeatherData>(
     {} as WeatherData
   );
-  const [forecasts, setForecasts] = useState<Forecasts>([]);
+  const [forecasts, setForecasts] = useState<Forecasts>([] as Forecasts);
   const [searchCity, setSearchCity] = useState<string>('Miami');
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);

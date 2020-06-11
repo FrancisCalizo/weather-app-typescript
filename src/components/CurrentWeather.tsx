@@ -19,32 +19,26 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
 
   // Get Current Conditions
   useEffect(() => {
-    if (weatherData) {
-      let tempInFarenheight = Math.round(weatherData.temp * (9 / 5) + 32);
-      setTemperature(tempInFarenheight);
-    }
+    let tempInFarenheight = Math.round(weatherData.temp * (9 / 5) + 32);
+    setTemperature(tempInFarenheight);
   }, [weatherData]);
 
   // Get Projected Data
   useEffect(() => {
-    if (forecasts) {
-      const todaysCast = forecasts?.filter(
-        (forecast) => forecast.valid_date === today
-      );
+    const todaysCast = forecasts?.filter(
+      (forecast) => forecast.valid_date === today
+    );
 
-      setTodaysForecast(todaysCast[0]);
-    }
+    setTodaysForecast(todaysCast[0]);
   }, [forecasts, today]);
 
   // Set Low and High Temperature
   useEffect(() => {
-    if (todaysForecast) {
-      let todaysLow = Math.round(todaysForecast!.min_temp * (9 / 5) + 32);
-      let todaysHigh = Math.round(todaysForecast!.max_temp * (9 / 5) + 32);
+    let todaysLow = Math.round(todaysForecast!.min_temp * (9 / 5) + 32);
+    let todaysHigh = Math.round(todaysForecast!.max_temp * (9 / 5) + 32);
 
-      setLow(todaysLow);
-      setHigh(todaysHigh);
-    }
+    setLow(todaysLow);
+    setHigh(todaysHigh);
   }, [todaysForecast]);
 
   return (
