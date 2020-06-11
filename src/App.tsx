@@ -62,22 +62,26 @@ function App() {
       });
   }, [searchCity]);
 
-  return (
-    <div>
-      <Location location={location} />
-      <CurrentWeather
-        weatherData={weatherData}
-        forecasts={forecasts}
-        today={today}
-      />
-      <SearchBar
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        setSearchCity={setSearchCity}
-      />
-      <WeeklyForecast forecasts={forecasts} />
-    </div>
-  );
+  if (Object.keys(weatherData).length === 0) {
+    return <h2>Loading...</h2>;
+  } else {
+    return (
+      <div>
+        <Location location={location} />
+        <CurrentWeather
+          weatherData={weatherData}
+          forecasts={forecasts}
+          today={today}
+        />
+        <SearchBar
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          setSearchCity={setSearchCity}
+        />
+        <WeeklyForecast forecasts={forecasts} />
+      </div>
+    );
+  }
 }
 
 export default App;
