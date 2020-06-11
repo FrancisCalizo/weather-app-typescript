@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { getDay } from 'date-fns';
+
+import useDayOfWeek from './hooks/useDayOfWeek';
 
 interface Props {
   weatherData: WeatherData;
@@ -50,7 +53,10 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
       <div>{weatherData.weather?.description}</div>
       <div>Low:{low}</div>
       <div>Low:{high}</div>
-      <div>Day:{weatherData.ob_time?.split(' ')[0]}</div>
+      <div>Date:{weatherData.ob_time?.split(' ')[0]}</div>
+      <div>
+        Day:{useDayOfWeek(getDay(new Date(weatherData.ob_time?.split(' ')[0])))}
+      </div>
     </div>
   );
 };
