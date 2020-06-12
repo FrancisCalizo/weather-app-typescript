@@ -4,12 +4,14 @@ interface Props {
   searchInput: string;
   setSearchInput: (input: string) => void;
   setSearchCity: (input: string) => void;
+  isGlobal: boolean;
 }
 
 const SearchBar: React.FC<Props> = ({
   searchInput,
   setSearchInput,
   setSearchCity,
+  isGlobal,
 }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
@@ -28,7 +30,7 @@ const SearchBar: React.FC<Props> = ({
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="City, State"
+        placeholder={isGlobal ? 'City, Country' : 'City, State'}
         value={searchInput}
         onChange={handleChange}
       />

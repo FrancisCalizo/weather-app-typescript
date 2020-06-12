@@ -30,8 +30,12 @@ function App() {
 
   // Fetch Current Weather
   useEffect(() => {
+    let countryCode: string;
+
+    isGlobal ? (countryCode = '') : (countryCode = 'US');
+
     fetch(
-      `https://api.weatherbit.io/v2.0/current?&city=${searchCity}&country=US&key=${process.env.REACT_APP_WEATHER_KEY}`
+      `https://api.weatherbit.io/v2.0/current?&city=${searchCity}&country=${countryCode}&key=${process.env.REACT_APP_WEATHER_KEY}`
     )
       .then((res) => {
         if (res.status === 200) {
@@ -49,7 +53,7 @@ function App() {
       .catch((err) => {
         alert(`Unable to find location "${searchCity}"`);
       });
-  }, [searchCity]);
+  }, [searchCity, isGlobal]);
 
   // Fetch Forecast
   useEffect(() => {
@@ -79,8 +83,12 @@ function App() {
   } else {
     return (
       <div>
-        <Location location={location} />
-        <ToggleCountry isGlobal={isGlobal} setIsGlobal={setIsGlobal} />
+        <Location location={location} isGlobal={isGlobal} />
+        <ToggleCountry
+          isGlobal={isGlobal}
+          setIsGlobal={setIsGlobal}
+          setSearchCity={setSearchCity}
+        />
         <CurrentWeather
           weatherData={weatherData}
           forecasts={forecasts}
@@ -90,6 +98,7 @@ function App() {
           searchInput={searchInput}
           setSearchInput={setSearchInput}
           setSearchCity={setSearchCity}
+          isGlobal={isGlobal}
         />
         <WeeklyForecast forecasts={forecasts} />
       </div>

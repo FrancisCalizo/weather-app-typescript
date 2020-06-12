@@ -1,12 +1,20 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 interface Props {
   isGlobal: boolean;
   setIsGlobal: (isGlobal: boolean) => void;
+  setSearchCity: (input: string) => void;
 }
 
-const ToggleCountry: React.FC<Props> = ({ isGlobal, setIsGlobal }) => {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+const ToggleCountry: React.FC<Props> = ({
+  isGlobal,
+  setIsGlobal,
+  setSearchCity,
+}) => {
+  const handleChange = () => {
+    if (isGlobal) {
+      setSearchCity('Fort Lauderdale');
+    }
     setIsGlobal(!isGlobal);
   };
 
