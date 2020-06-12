@@ -13,3 +13,9 @@
 - new Date was returning the day before with "yyyy-mm-dd" format. This link shows some "gotchas" when dealing with dates - https://stackoverflow.com/a/31732581
 
 - Toggle in Tailwind - https://codepen.io/lhermann/pen/EBGZRZ
+
+- More on React Events with TypeScript - https://fettblog.eu/typescript-react/events/
+
+- Get user's current location with GeoLocation API - https://www.w3schools.com/html/html5_geolocation.asp
+
+- Geolocation Types - https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_dom_d_.geolocation.html#getcurrentposition

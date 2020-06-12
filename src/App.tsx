@@ -6,6 +6,7 @@ import Location from './components/Location';
 import SearchBar from './components/SearchBar';
 import WeeklyForecast from './components/WeeklyForecast';
 import ToggleCountry from './components/ToggleCountry';
+import GeoLocation from './components/GeoLocation';
 
 function App() {
   const [today, setToday] = useState('');
@@ -83,6 +84,7 @@ function App() {
   } else {
     return (
       <div>
+        <GeoLocation />
         <Location location={location} isGlobal={isGlobal} />
         <ToggleCountry
           isGlobal={isGlobal}
