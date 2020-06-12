@@ -2,13 +2,15 @@ import React, { MouseEvent } from 'react';
 
 interface Props {
   setCoordinates: (coordinates: ICoordinates) => void;
+  setUseLocation: (bool: boolean) => void;
 }
 
-const GeoLocation: React.FC<Props> = ({ setCoordinates }) => {
+const GeoLocation: React.FC<Props> = ({ setCoordinates, setUseLocation }) => {
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
 
     const getPos: PositionCallback = (pos): void => {
+      setUseLocation(true);
       setCoordinates({ lat: pos.coords.latitude, long: pos.coords.longitude });
     };
 
