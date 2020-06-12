@@ -25,7 +25,7 @@ function App() {
   const [isGlobal, setIsGlobal] = useState(false);
   const [coordinates, setCoordinates] = useState({
     lat: 25.7617,
-    long: 80.1918,
+    long: -80.1918,
   });
   const [useLocation, setUseLocation] = useState(false);
 
@@ -66,11 +66,22 @@ function App() {
       });
   }, [searchCity, isGlobal, coordinates, useLocation]);
 
-  // Fetch Forecast
+  // Fetch 5-Day Forecast
   useEffect(() => {
-    fetch(
-      `https://api.weatherbit.io/v2.0/forecast/daily?city=${searchCity}&country=US&key=${process.env.REACT_APP_WEATHER_KEY}`
-    )
+    let countryCode: string;
+    let url: string;
+
+    // Determine which URL to use
+    if (useLocation) {
+      url = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${coordinates.lat}&lon=${coordinates.long}&key=${process.env.REACT_APP_WEATHER_KEY}`;
+      console.log(url);
+    } else {
+      isGlobal ? (countryCode = '') : (countryCode = 'US');
+      url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${searchCity}&country=${countryCode}&key=${process.env.REACT_APP_WEATHER_KEY}`;
+      console.log(url);
+    }
+
+    fetch(url)
       .then((res) => res.json())
       .then((res) => {
         setForecasts(res.data);
@@ -78,7 +89,7 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
-  }, [searchCity]);
+  }, [searchCity, isGlobal, coordinates, useLocation]);
 
   // Check Loading State
   useEffect(() => {
