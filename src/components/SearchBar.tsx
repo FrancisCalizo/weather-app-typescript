@@ -28,7 +28,7 @@ const SearchBar: React.FC<Props> = ({
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Enter a location"
+        placeholder="City, State"
         value={searchInput}
         onChange={handleChange}
       />

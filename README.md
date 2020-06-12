@@ -11,3 +11,5 @@
 - Less conditional Statements for returning JSX in functional components - Found a way to Return Components without so many conditional statements. Initial States should not be null, but Arrays or Objects. Start of with empty objects or arrays with type assertion. Then if trying to output properties or arrays, then using conditional operator (?) for variables.
 
 - new Date was returning the day before with "yyyy-mm-dd" format. This link shows some "gotchas" when dealing with dates - https://stackoverflow.com/a/31732581
+
+- Toggle in Tailwind - https://codepen.io/lhermann/pen/EBGZRZ

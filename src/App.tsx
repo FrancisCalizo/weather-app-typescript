@@ -5,11 +5,12 @@ import CurrentWeather from './components/CurrentWeather';
 import Location from './components/Location';
 import SearchBar from './components/SearchBar';
 import WeeklyForecast from './components/WeeklyForecast';
+import ToggleCountry from './components/ToggleCountry';
 
 function App() {
   const [today, setToday] = useState('');
   const [location, setLocation] = useState({
-    city: 'Miami',
+    city: 'Fort Lauderdale',
     state: 'FL',
     country: 'US',
   });
@@ -17,9 +18,10 @@ function App() {
     {} as WeatherData
   );
   const [forecasts, setForecasts] = useState<Forecasts>([] as Forecasts);
-  const [searchCity, setSearchCity] = useState<string>('Miami');
+  const [searchCity, setSearchCity] = useState<string>('Fort Lauderdale');
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isGlobal, setIsGlobal] = useState(false);
 
   // Get Today's Date
   useEffect(() => {
@@ -78,6 +80,7 @@ function App() {
     return (
       <div>
         <Location location={location} />
+        <ToggleCountry isGlobal={isGlobal} setIsGlobal={setIsGlobal} />
         <CurrentWeather
           weatherData={weatherData}
           forecasts={forecasts}
