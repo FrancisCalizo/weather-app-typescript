@@ -8,25 +8,18 @@ import WeeklyForecast from './components/WeeklyForecast';
 import ToggleCountry from './components/ToggleCountry';
 import GeoLocation from './components/GeoLocation';
 
+import { initialLocation, initialCoordinates, initialSearchCity } from './data';
+
 function App() {
   const [today, setToday] = useState('');
-  const [location, setLocation] = useState({
-    city: 'Miami',
-    state: 'FL',
-    country: 'US',
-  });
-  const [weatherData, setWeatherData] = useState<WeatherData>(
-    {} as WeatherData
-  );
-  const [forecasts, setForecasts] = useState<Forecasts>([] as Forecasts);
-  const [searchCity, setSearchCity] = useState<string>('Miami');
+  const [location, setLocation] = useState(initialLocation);
+  const [weatherData, setWeatherData] = useState({} as WeatherData);
+  const [forecasts, setForecasts] = useState([] as Forecasts);
+  const [searchCity, setSearchCity] = useState(initialSearchCity);
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [isGlobal, setIsGlobal] = useState(false);
-  const [coordinates, setCoordinates] = useState({
-    lat: 25.7617,
-    long: -80.1918,
-  });
+  const [coordinates, setCoordinates] = useState(initialCoordinates);
   const [useLocation, setUseLocation] = useState(false);
 
   // Get Today's Date
@@ -41,7 +34,7 @@ function App() {
 
     // Determine which URL to use
     if (useLocation) {
-      url = `https://api.weatherbit.io/v2.0/current?&lat=${coordinates.lat}&lon=${coordinates.long}&key=83aaae70c86844f2866e81dfe8d7b565`;
+      url = `https://api.weatherbit.io/v2.0/current?&lat=${coordinates.lat}&lon=${coordinates.long}&key=${process.env.REACT_APP_WEATHER_KEY}`;
     } else {
       isGlobal ? (countryCode = '') : (countryCode = 'US');
       url = `https://api.weatherbit.io/v2.0/current?&city=${searchCity}&country=${countryCode}&key=${process.env.REACT_APP_WEATHER_KEY}`;
@@ -74,11 +67,9 @@ function App() {
     // Determine which URL to use
     if (useLocation) {
       url = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${coordinates.lat}&lon=${coordinates.long}&key=${process.env.REACT_APP_WEATHER_KEY}`;
-      console.log(url);
     } else {
       isGlobal ? (countryCode = '') : (countryCode = 'US');
       url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${searchCity}&country=${countryCode}&key=${process.env.REACT_APP_WEATHER_KEY}`;
-      console.log(url);
     }
 
     fetch(url)

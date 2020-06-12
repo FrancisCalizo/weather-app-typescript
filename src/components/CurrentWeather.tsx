@@ -22,14 +22,16 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
     );
 
     setTodaysForecast(todaysCast[0]);
-  }, [forecasts, today]);
+  }, [forecasts, today, weatherData]);
 
+  console.log(todaysForecast?.min_temp);
   return (
     <div>
       <div>{useFahrenheit(weatherData.temp)}&#176;</div>
       <div>{weatherData.weather?.description}</div>
-      <div>Low:{useFahrenheit(todaysForecast!.min_temp)}</div>
-      <div>High{useFahrenheit(todaysForecast!.max_temp)}</div>
+      <div>Low:{useFahrenheit(todaysForecast?.min_temp)}</div>
+      <div>High{useFahrenheit(todaysForecast?.max_temp)}</div>
+      <div>ex:{todaysForecast?.min_temp}</div>
       <div>
         Date:
         {weatherData.ob_time &&

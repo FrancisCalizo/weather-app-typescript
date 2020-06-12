@@ -14,7 +14,10 @@ const ToggleCountry: React.FC<Props> = ({
   const handleChange = () => {
     if (isGlobal) {
       setSearchCity('Miami');
+    } else {
+      setSearchCity('Barcelona');
     }
+
     setIsGlobal(!isGlobal);
   };
 
