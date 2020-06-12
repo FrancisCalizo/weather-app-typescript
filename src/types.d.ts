@@ -95,3 +95,8 @@ type WeatherData = {
 };
 
 type Day = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | 'Sun' | '';
+
+type ICoordinates = {
+  lat: number;
+  long: number;
+};

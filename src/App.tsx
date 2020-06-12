@@ -11,7 +11,7 @@ import GeoLocation from './components/GeoLocation';
 function App() {
   const [today, setToday] = useState('');
   const [location, setLocation] = useState({
-    city: 'Fort Lauderdale',
+    city: 'Miami',
     state: 'FL',
     country: 'US',
   });
@@ -19,10 +19,11 @@ function App() {
     {} as WeatherData
   );
   const [forecasts, setForecasts] = useState<Forecasts>([] as Forecasts);
-  const [searchCity, setSearchCity] = useState<string>('Fort Lauderdale');
+  const [searchCity, setSearchCity] = useState<string>('Miami');
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [isGlobal, setIsGlobal] = useState(false);
+  const [coordinates, setCoordinates] = useState({} as ICoordinates);
 
   // Get Today's Date
   useEffect(() => {
@@ -84,7 +85,7 @@ function App() {
   } else {
     return (
       <div>
-        <GeoLocation />
+        <GeoLocation setCoordinates={setCoordinates} />
         <Location location={location} isGlobal={isGlobal} />
         <ToggleCountry
           isGlobal={isGlobal}
