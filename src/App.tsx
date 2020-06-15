@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { format } from 'date-fns';
+import { format, add } from 'date-fns';
 
 import CurrentWeather from './components/CurrentWeather';
 import Location from './components/Location';
@@ -21,6 +21,7 @@ function App() {
     JSON.parse(localStorage.getItem('isGlobal')!) || false
   );
   const [today, setToday] = useState('');
+  const [tomorrow, setTomorrow] = useState('');
   const [weatherData, setWeatherData] = useState({} as WeatherData);
   const [forecasts, setForecasts] = useState([] as Forecasts);
   const [searchInput, setSearchInput] = useState('');
@@ -31,6 +32,7 @@ function App() {
   // Get Today's Date
   useEffect(() => {
     setToday(format(new Date(), 'yyyy-MM-dd'));
+    setTomorrow(format(add(new Date(), { days: 1 }), 'yyyy-MM-dd'));
   }, []);
 
   // Fetch Current Weather
@@ -123,6 +125,8 @@ function App() {
           weatherData={weatherData}
           forecasts={forecasts}
           today={today}
+          tomorrow={tomorrow}
+          setWeatherData={setWeatherData}
         />
         <SearchBar
           searchInput={searchInput}

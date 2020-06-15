@@ -8,21 +8,39 @@ interface Props {
   weatherData: WeatherData;
   forecasts: Forecasts;
   today: string;
+  tomorrow: string;
+  setWeatherData: (weatherData: WeatherData) => void;
 }
 
-const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
+const CurrentWeather: React.FC<Props> = ({
+  weatherData,
+  forecasts,
+  today,
+  tomorrow,
+  setWeatherData,
+}) => {
   const [todaysForecast, setTodaysForecast] = useState<Forecast>(
     {} as Forecast
   );
 
   // Get Projected Data
   useEffect(() => {
-    const todaysCast = forecasts?.filter(
-      (forecast) => forecast.valid_date === today
-    );
+    let todaysCast;
+
+    todaysCast = forecasts?.filter((forecast) => forecast.valid_date === today);
+
+    if (todaysCast.length === 0) {
+      todaysCast = forecasts?.filter(
+        (forecast) => forecast.valid_date === tomorrow
+      );
+
+      setWeatherData({ ...weatherData, ob_time: tomorrow });
+    }
 
     setTodaysForecast(todaysCast[0]);
-  }, [forecasts, today, weatherData]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [forecasts, today, tomorrow, setWeatherData]);
 
   return (
     <div>
@@ -30,7 +48,6 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
       <div>{weatherData.weather?.description}</div>
       <div>Low:{useFahrenheit(todaysForecast?.min_temp)}</div>
       <div>High{useFahrenheit(todaysForecast?.max_temp)}</div>
-      <div>ex:{todaysForecast?.min_temp}</div>
       <div>
         Date:
         {weatherData.ob_time &&
