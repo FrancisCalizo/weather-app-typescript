@@ -81,6 +81,7 @@ function App() {
       url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${searchCity}&country=${countryCode}&key=${process.env.REACT_APP_WEATHER_KEY}`;
     }
 
+    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
