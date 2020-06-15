@@ -9,7 +9,6 @@ interface Props {
 const Location: React.FC<Props> = ({ location, isGlobal }) => {
   return (
     <div>
-      {/* <h1 style={styles}>{`${location.city},${location.state}`}</h1> */}
       <h1 style={styles}>{`${location.city}, ${
         isGlobal ? location.country : location.state
       }`}</h1>
