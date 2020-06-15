@@ -11,14 +11,20 @@ import GeoLocation from './components/GeoLocation';
 import { initialLocation, initialCoordinates, initialSearchCity } from './data';
 
 function App() {
+  const [location, setLocation] = useState(
+    JSON.parse(localStorage.getItem('location')!) || initialLocation
+  );
+  const [searchCity, setSearchCity] = useState(
+    localStorage.getItem('searchCity') || initialSearchCity
+  );
+  const [isGlobal, setIsGlobal] = useState<boolean>(
+    JSON.parse(localStorage.getItem('isGlobal')!) || false
+  );
   const [today, setToday] = useState('');
-  const [location, setLocation] = useState(initialLocation);
   const [weatherData, setWeatherData] = useState({} as WeatherData);
   const [forecasts, setForecasts] = useState([] as Forecasts);
-  const [searchCity, setSearchCity] = useState(initialSearchCity);
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isGlobal, setIsGlobal] = useState(false);
   const [coordinates, setCoordinates] = useState(initialCoordinates);
   const [useLocation, setUseLocation] = useState(false);
 
@@ -53,6 +59,7 @@ function App() {
           state: res.data[0].state_code,
           country: res.data[0].country_code,
         });
+        setSearchCity(res.data[0].city_name.toLowerCase());
       })
       .catch((err) => {
         alert(`Unable to find location "${searchCity}"`);
@@ -90,6 +97,12 @@ function App() {
       setLoading(false);
     }
   }, [forecasts, weatherData]);
+
+  // Set LocalStorage
+  useEffect(() => {
+    localStorage.setItem('location', JSON.stringify(location));
+    localStorage.setItem('searchCity', location.city);
+  }, [location, searchCity]);
 
   if (loading) {
     return <h2>Loading...</h2>;

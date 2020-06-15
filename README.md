@@ -19,3 +19,7 @@
 - Get user's current location with GeoLocation API - https://www.w3schools.com/html/html5_geolocation.asp
 
 - Geolocation Types - https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_dom_d_.geolocation.html#getcurrentposition
+
+- Local Storage with React - https://www.robinwieruch.de/local-storage-react
+
+- JSON.stringify() and JSON.parse() with local storage objects - https://www.htmldog.com/guides/javascript/advanced/localstorage/#:~:text=var%20name%20%3D%20localStorage.,isn't%20right%20at%20all!

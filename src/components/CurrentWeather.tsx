@@ -24,7 +24,6 @@ const CurrentWeather: React.FC<Props> = ({ weatherData, forecasts, today }) => {
     setTodaysForecast(todaysCast[0]);
   }, [forecasts, today, weatherData]);
 
-  console.log(todaysForecast?.min_temp);
   return (
     <div>
       <div>{useFahrenheit(weatherData.temp)}&#176;</div>

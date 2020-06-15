@@ -18,6 +18,7 @@ const ToggleCountry: React.FC<Props> = ({
       setSearchCity('Barcelona');
     }
 
+    localStorage.setItem('isGlobal', JSON.stringify(!isGlobal));
     setIsGlobal(!isGlobal);
   };
 
