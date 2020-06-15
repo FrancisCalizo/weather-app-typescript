@@ -25,3 +25,5 @@
 - JSON.stringify() and JSON.parse() with local storage objects - https://www.htmldog.com/guides/javascript/advanced/localstorage/#:~:text=var%20name%20%3D%20localStorage.,isn't%20right%20at%20all!
 
 - TailwindCSS Setup with Create-React-App (fast!) - https://www.smashingmagazine.com/2020/02/tailwindcss-react-project/
+
+- CSS Modules with CRA (filename.modules.css) - https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/
