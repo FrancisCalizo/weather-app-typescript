@@ -109,7 +109,7 @@ function App() {
     return <h2>Loading...</h2>;
   } else {
     return (
-      <div>
+      <div className="max-w-2xl mx-auto">
         <Navbar
           setCoordinates={setCoordinates}
           setUseLocation={setUseLocation}

@@ -9,9 +9,9 @@ interface Props {
 const Location: React.FC<Props> = ({ location, isGlobal }) => {
   return (
     <div>
-      <h1 className="text-3xl text-center" style={styles}>{`${location.city}, ${
-        isGlobal ? location.country : location.state
-      }`}</h1>
+      <h1 className="text-3xl text-center mt-12" style={styles}>{`${
+        location.city
+      }, ${isGlobal ? location.country : location.state}`}</h1>
     </div>
   );
 };

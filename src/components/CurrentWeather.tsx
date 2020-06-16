@@ -43,7 +43,7 @@ const CurrentWeather: React.FC<Props> = ({
   }, [forecasts, today, tomorrow, setWeatherData]);
 
   return (
-    <div className="text-center">
+    <div className="text-center mb-12">
       <div>{weatherData.weather?.description}</div>
       <div className="flex flex-row justify-center items-center">
         <div className="text-6xl">{useFahrenheit(weatherData.temp)}&#176;</div>
