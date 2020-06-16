@@ -1,5 +1,7 @@
 import React, { MouseEvent } from 'react';
 
+import location from '../images/location.png';
+
 interface Props {
   setCoordinates: (coordinates: ICoordinates) => void;
   setUseLocation: (bool: boolean) => void;
@@ -38,8 +40,10 @@ const GeoLocation: React.FC<Props> = ({ setCoordinates, setUseLocation }) => {
   };
 
   return (
-    <div>
-      <button onClick={handleClick}>Get Location</button>
+    <div className="w-8">
+      <button onClick={handleClick}>
+        <img src={location} alt="location" />
+      </button>
     </div>
   );
 };

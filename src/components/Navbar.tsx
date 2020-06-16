@@ -1,4 +1,5 @@
 import React from 'react';
+
 import GeoLocation from './GeoLocation';
 import ToggleCountry from './ToggleCountry';
 import SearchBar from './SearchBar';
