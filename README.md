@@ -27,3 +27,5 @@
 - TailwindCSS Setup with Create-React-App (fast!) - https://www.smashingmagazine.com/2020/02/tailwindcss-react-project/
 
 - CSS Modules with CRA (filename.modules.css) - https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/
+
+- Import local image in React - https://stackoverflow.com/questions/39999367/how-do-i-reference-a-local-image-in-react
