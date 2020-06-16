@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { format, add } from 'date-fns';
 
+import Navbar from './components/Navbar';
 import CurrentWeather from './components/CurrentWeather';
 import Location from './components/Location';
-import SearchBar from './components/SearchBar';
 import WeeklyForecast from './components/WeeklyForecast';
-import ToggleCountry from './components/ToggleCountry';
-import GeoLocation from './components/GeoLocation';
 
 import { initialLocation, initialCoordinates, initialSearchCity } from './data';
 
@@ -112,29 +110,22 @@ function App() {
   } else {
     return (
       <div>
-        <GeoLocation
+        <Navbar
           setCoordinates={setCoordinates}
           setUseLocation={setUseLocation}
-        />
-        <Location location={location} isGlobal={isGlobal} />
-        <ToggleCountry
           isGlobal={isGlobal}
           setIsGlobal={setIsGlobal}
           setSearchCity={setSearchCity}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
         />
+        <Location location={location} isGlobal={isGlobal} />
         <CurrentWeather
           weatherData={weatherData}
           forecasts={forecasts}
           today={today}
           tomorrow={tomorrow}
           setWeatherData={setWeatherData}
-        />
-        <SearchBar
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-          setSearchCity={setSearchCity}
-          isGlobal={isGlobal}
-          setUseLocation={setUseLocation}
         />
         <WeeklyForecast forecasts={forecasts} />
       </div>

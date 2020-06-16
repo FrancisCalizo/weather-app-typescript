@@ -13,16 +13,16 @@ interface Props {
 const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
     <div style={styles}>
-      <div>Date: {forecast?.datetime}</div>
       <div>
-        Date: {format(new Date(forecast?.datetime.replace(/-/g, '/')), 'MMM d')}
+        {useDayOfWeek(getDay(new Date(forecast?.datetime!)))}
+        {', '}
+        {format(new Date(forecast?.datetime.replace(/-/g, '/')), 'MMM d')}
       </div>
+      <div>{forecast?.weather.description}</div>
       <div>
-        Day of Week: {useDayOfWeek(getDay(new Date(forecast?.datetime!)))}{' '}
+        {useFahrenheit(forecast!.max_temp)}&#176; |{' '}
+        {useFahrenheit(forecast!.min_temp)}&#176;
       </div>
-      <div>Forecast: {forecast?.weather.description}</div>
-      <div>High: {useFahrenheit(forecast!.max_temp)}</div>
-      <div>Low: {useFahrenheit(forecast!.min_temp)}</div>
     </div>
   );
 };

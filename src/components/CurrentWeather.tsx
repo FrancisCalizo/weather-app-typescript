@@ -43,21 +43,23 @@ const CurrentWeather: React.FC<Props> = ({
   }, [forecasts, today, tomorrow, setWeatherData]);
 
   return (
-    <div>
-      <div>{useFahrenheit(weatherData.temp)}&#176;</div>
+    <div className="text-center">
       <div>{weatherData.weather?.description}</div>
-      <div>Low:{useFahrenheit(todaysForecast?.min_temp)}</div>
-      <div>High{useFahrenheit(todaysForecast?.max_temp)}</div>
+      <div className="flex flex-row justify-center items-center">
+        <div className="text-6xl">{useFahrenheit(weatherData.temp)}&#176;</div>
+        <div>
+          <div>{useFahrenheit(todaysForecast?.max_temp)}&#176;</div>
+          <hr />
+          <div>{useFahrenheit(todaysForecast?.min_temp)}&#176;</div>
+        </div>
+      </div>
       <div>
-        Date:
+        {useDayOfWeek(getDay(new Date(weatherData.ob_time?.split(' ')[0])))},{' '}
         {weatherData.ob_time &&
           format(
             new Date(weatherData.ob_time?.split(' ')[0].replace(/-/g, '/')),
             'MMM d'
           )}
-      </div>
-      <div>
-        Day:{useDayOfWeek(getDay(new Date(weatherData.ob_time?.split(' ')[0])))}
       </div>
     </div>
   );

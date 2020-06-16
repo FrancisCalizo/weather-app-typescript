@@ -30,15 +30,17 @@ const SearchBar: React.FC<Props> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder={isGlobal ? 'City, Country' : 'City, State'}
-        value={searchInput}
-        onChange={handleChange}
-      />
-      <button type="submit">Search</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder={isGlobal ? 'City, Country' : 'City, State'}
+          value={searchInput}
+          onChange={handleChange}
+        />
+        <button type="submit">Search</button>
+      </form>
+    </div>
   );
 };
 
