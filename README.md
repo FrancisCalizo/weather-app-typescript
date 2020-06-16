@@ -29,3 +29,5 @@
 - CSS Modules with CRA (filename.modules.css) - https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/
 
 - Import local image in React - https://stackoverflow.com/questions/39999367/how-do-i-reference-a-local-image-in-react
+
+- Switch statement with a range of numbers - https://stackoverflow.com/questions/5619832/switch-on-ranges-of-integers-in-javascript
