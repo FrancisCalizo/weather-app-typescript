@@ -9,7 +9,7 @@ import WeeklyForecast from './components/WeeklyForecast';
 import { initialLocation, initialCoordinates, initialSearchCity } from './data';
 
 function App() {
-  const [location, setLocation] = useState(
+  const [location, setLocation] = useState<ILocation>(
     JSON.parse(localStorage.getItem('location')!) || initialLocation
   );
   const [searchCity, setSearchCity] = useState(
@@ -59,7 +59,6 @@ function App() {
           state: res.data[0].state_code,
           country: res.data[0].country_code,
         });
-        setSearchCity(res.data[0].city_name.toLowerCase());
       })
       .catch((err) => {
         alert(`Unable to find location "${searchCity}"`);
@@ -101,8 +100,13 @@ function App() {
   // Set LocalStorage
   useEffect(() => {
     localStorage.setItem('location', JSON.stringify(location));
-    localStorage.setItem('searchCity', location.city);
-  }, [location, searchCity]);
+
+    if (useLocation) {
+      localStorage.setItem('searchCity', `${location.city}, ${location.state}`);
+    } else {
+      localStorage.setItem('searchCity', searchCity);
+    }
+  }, [location, searchCity, useLocation]);
 
   if (loading) {
     return <h2>Loading...</h2>;
