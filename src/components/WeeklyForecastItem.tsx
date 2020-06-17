@@ -53,16 +53,18 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
     <div style={styles} className="text-center">
       <div>
-        {useDayOfWeek(getDay(new Date(forecast?.datetime!)))}
-        {', '}
-        {format(new Date(forecast?.datetime.replace(/-/g, '/')), 'MMM d')}
+        <span>{useDayOfWeek(getDay(new Date(forecast?.datetime!)))}</span>
+        <span>{', '}</span>
+        <span>
+          {format(new Date(forecast?.datetime.replace(/-/g, '/')), 'MMM d')}
+        </span>
       </div>
       <img
         src={getIcon(forecast?.weather.code)}
         alt={forecast?.weather.description}
       />
       <div>
-        {useFahrenheit(forecast!.max_temp)}&#176; |{' '}
+        {useFahrenheit(forecast!.max_temp)}&#176;{'  '}
         {useFahrenheit(forecast!.min_temp)}&#176;
       </div>
     </div>

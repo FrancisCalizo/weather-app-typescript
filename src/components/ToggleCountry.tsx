@@ -40,7 +40,7 @@ const ToggleCountry: React.FC<Props> = ({
             <div className="text-sm text-gray-300">ALL</div>
           </div>
           <div
-            className={`${styles.toggle__dot} absolute w-10 h-7 bg-white rounded-full shadow inset-y-0 left-0`}
+            className={`${styles.toggle__dot} absolute w-10 h-6 bg-white rounded-full shadow inset-y-0 left-0`}
           ></div>
         </div>
         <div className="ml-3 text-gray-700 font-medium"></div>
