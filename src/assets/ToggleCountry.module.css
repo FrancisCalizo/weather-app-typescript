@@ -5,6 +5,6 @@
 }
 
 input:checked ~ .toggle__dot {
-  transform: translateX(310%);
+  transform: translateX(93%);
   background-color: #48bb78;
 }

@@ -24,7 +24,7 @@ const Navbar: React.FC<Props> = ({
   setSearchInput,
 }) => {
   return (
-    <nav className="flex flex-row justify-between">
+    <nav className="flex flex-row justify-between items-center">
       <GeoLocation
         setCoordinates={setCoordinates}
         setUseLocation={setUseLocation}
