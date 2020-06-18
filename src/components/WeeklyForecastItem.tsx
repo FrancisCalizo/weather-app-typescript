@@ -11,7 +11,7 @@ interface Props {
 
 const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
-    <div className="flex flex-row justify-between items-center text-center">
+    <div className="flex flex-row justify-between items-center text-center text-base xs:text-base">
       <div>
         <span>
           {useDayOfWeek(getDay(new Date(forecast?.datetime!)), 'long')}
