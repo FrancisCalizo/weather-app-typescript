@@ -54,7 +54,11 @@ const CurrentWeather: React.FC<Props> = ({
         </div>
       </div>
       <div>
-        {useDayOfWeek(getDay(new Date(weatherData.ob_time?.split(' ')[0])))},{' '}
+        {useDayOfWeek(
+          getDay(new Date(weatherData.ob_time?.split(' ')[0])),
+          'short'
+        )}
+        ,{' '}
         {weatherData.ob_time &&
           format(
             new Date(weatherData.ob_time?.split(' ')[0].replace(/-/g, '/')),

@@ -13,11 +13,11 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
     <div className="flex flex-row justify-between items-center text-center">
       <div>
-        <span>{useDayOfWeek(getDay(new Date(forecast?.datetime!)))}</span>
-        <span>{', '}</span>
         <span>
-          {format(new Date(forecast?.datetime.replace(/-/g, '/')), 'MMM d')}
+          {useDayOfWeek(getDay(new Date(forecast?.datetime!)), 'long')}
         </span>
+        {/* <span>{', '}</span> */}
+        {/* <span>{format(new Date(forecast?.datetime.replace(/-/g, '/')), 'MMM dddd')}</span> */}
       </div>
       <img
         src={useWeatherIcon(forecast?.weather.code)}
