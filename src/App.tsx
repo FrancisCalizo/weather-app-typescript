@@ -7,6 +7,7 @@ import Location from './components/Location';
 import WeeklyForecast from './components/WeeklyForecast';
 
 import { initialLocation, initialCoordinates, initialSearchCity } from './data';
+import HourlyForecast from './components/HourlyForecast';
 
 function App() {
   const [location, setLocation] = useState<ILocation>(
@@ -22,6 +23,10 @@ function App() {
   const [tomorrow, setTomorrow] = useState('');
   const [weatherData, setWeatherData] = useState({} as WeatherData);
   const [forecasts, setForecasts] = useState([] as Forecasts);
+  const [hourlyForecasts, setHourlyForecasts] = useState(
+    [] as IHourlyForecast[]
+  );
+  const [hours] = useState(6);
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [coordinates, setCoordinates] = useState(initialCoordinates);
@@ -88,6 +93,29 @@ function App() {
       });
   }, [searchCity, isGlobal, coordinates, useLocation]);
 
+  // Fetch Hourly Forecast
+  useEffect(() => {
+    let countryCode: string;
+    let url: string;
+
+    // Determine which URL to use
+    if (useLocation) {
+      url = `https://api.weatherbit.io/v2.0/forecast/hourly?lat=${coordinates.lat}&lon=${coordinates.long}&key=${process.env.REACT_APP_WEATHER_KEY}&hours=${hours}`;
+    } else {
+      isGlobal ? (countryCode = '') : (countryCode = 'US');
+      url = `https://api.weatherbit.io/v2.0/forecast/hourly?city=${searchCity}&country=${countryCode}&key=${process.env.REACT_APP_WEATHER_KEY}&hours=${hours}`;
+    }
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        setHourlyForecasts(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [searchCity, isGlobal, coordinates, useLocation, hours]);
+
   // Check Loading State
   useEffect(() => {
     if (Object.keys(weatherData).length === 0 || forecasts.length === 0) {
@@ -130,6 +158,7 @@ function App() {
           tomorrow={tomorrow}
           setWeatherData={setWeatherData}
         />
+        <HourlyForecast hourlyForecasts={hourlyForecasts} />
         <WeeklyForecast forecasts={forecasts} />
       </div>
     );

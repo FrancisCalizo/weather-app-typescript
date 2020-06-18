@@ -31,3 +31,7 @@
 - Import local image in React - https://stackoverflow.com/questions/39999367/how-do-i-reference-a-local-image-in-react
 
 - Switch statement with a range of numbers - https://stackoverflow.com/questions/5619832/switch-on-ranges-of-integers-in-javascript
+
+- String.substring() is considered legacy (basically deprecated) .. use slice() instead - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr
+
+- Format Time in "12PM" format using the format object in Date-FNS - https://date-fns.org/v2.14.0/docs/format

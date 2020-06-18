@@ -94,6 +94,45 @@ type WeatherData = {
   app_temp: number;
 };
 
+type IHourlyForecast = {
+  wind_cdir: string;
+  rh: number;
+  pod: string;
+  timestamp_utc: string;
+  pres: number;
+  solar_rad: number;
+  ozone: number;
+  weather: {
+    icon: string;
+    code: number;
+    description: string;
+  };
+  wind_gust_spd: number;
+  timestamp_local: string;
+  snow_depth: number;
+  clouds: number;
+  ts: number;
+  wind_spd: number;
+  pop: number;
+  wind_cdir_full: string;
+  slp: number;
+  dni: number;
+  dewpt: number;
+  snow: number;
+  uv: number;
+  wind_dir: number;
+  clouds_hi: number;
+  precip: number;
+  vis: number;
+  dhi: number;
+  app_temp: number;
+  datetime: string;
+  temp: number;
+  ghi: number;
+  clouds_mid: number;
+  clouds_low: number;
+};
+
 type Day = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | 'Sun' | '';
 
 type ICoordinates = {
