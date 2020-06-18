@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import CSS from 'csstype';
 
 import WeeklyForecastItem from './WeeklyForecastItem';
 
@@ -20,16 +19,12 @@ const WeeklyForecast: React.FC<Props> = ({ forecasts }) => {
   }, [forecasts]);
 
   return (
-    <div style={styles}>
+    <div>
       {weeklyForecasts?.map((forecast, idx) => (
         <WeeklyForecastItem key={idx} forecast={forecast} />
       ))}
     </div>
   );
-};
-
-const styles: CSS.Properties = {
-  display: 'flex',
 };
 
 export default WeeklyForecast;

@@ -8,7 +8,7 @@ interface Props {
 
 const HourlyForecast: React.FC<Props> = ({ hourlyForecasts }) => {
   return (
-    <div className="flex flex-row justify-around items-center">
+    <div className="flex flex-row justify-between items-center mb-12">
       {hourlyForecasts.map((hourlyForecast, idx) => (
         <HourlyForecastItem key={idx} hourlyForecast={hourlyForecast} />
       ))}

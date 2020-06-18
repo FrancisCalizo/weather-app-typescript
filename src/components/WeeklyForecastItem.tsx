@@ -1,6 +1,5 @@
 import React from 'react';
 import { getDay, format } from 'date-fns';
-import CSS from 'csstype';
 
 import useDayOfWeek from './hooks/useDayOfWeek';
 import useFahrenheit from './hooks/useFahrenheit';
@@ -51,7 +50,7 @@ const getIcon = (code: number) => {
 
 const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
-    <div style={styles} className="text-center">
+    <div className="flex flex-row justify-between items-center text-center">
       <div>
         <span>{useDayOfWeek(getDay(new Date(forecast?.datetime!)))}</span>
         <span>{', '}</span>
@@ -62,6 +61,7 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
       <img
         src={getIcon(forecast?.weather.code)}
         alt={forecast?.weather.description}
+        className="w-10"
       />
       <div>
         {useFahrenheit(forecast!.max_temp)}&#176;{'  '}
@@ -69,10 +69,6 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
       </div>
     </div>
   );
-};
-
-const styles: CSS.Properties = {
-  padding: `1rem`,
 };
 
 export default WeeklyForecastItem;
