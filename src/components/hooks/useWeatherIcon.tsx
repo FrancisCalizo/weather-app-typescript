@@ -64,7 +64,7 @@ const useWeatherIcon = (code: number, hour: number): string => {
       default:
         return;
     }
-  }, [code]);
+  }, [code, hour, sunrise, sunset]);
 
   return icon;
 };

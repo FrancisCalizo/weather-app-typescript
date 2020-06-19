@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDay, format } from 'date-fns';
+import { getDay } from 'date-fns';
 
 import useDayOfWeek from './hooks/useDayOfWeek';
 import useFahrenheit from './hooks/useFahrenheit';
@@ -12,7 +12,7 @@ interface Props {
 const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
     <div className="flex flex-row justify-between items-center text-base xs:text-base">
-      <div className="w-1/3 text-left">
+      <div className="w-1/3 text-left pl-4">
         <span>
           {useDayOfWeek(getDay(new Date(forecast?.datetime!)), 'long')}
         </span>
@@ -26,7 +26,7 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
           className="w-10 mx-auto"
         />
       </div>
-      <div className="w-1/3 text-right">
+      <div className="w-1/3 text-right pr-4">
         {useFahrenheit(forecast!.max_temp)}&#176;{'  '}
         {useFahrenheit(forecast!.min_temp)}&#176;
       </div>

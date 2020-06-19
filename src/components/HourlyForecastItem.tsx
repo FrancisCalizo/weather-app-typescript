@@ -14,7 +14,7 @@ const HourlyForecastItem: React.FC<Props> = ({ hourlyForecast }) => {
       <div>{format(new Date(hourlyForecast.timestamp_local), 'haa')}</div>
       <div>
         <img
-          className="w-20"
+          className="w-16 mx-auto"
           src={useWeatherIcon(
             hourlyForecast.weather.code,
             getHours(new Date(hourlyForecast.timestamp_local))
