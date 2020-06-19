@@ -39,7 +39,7 @@ const SearchBar: React.FC<Props> = ({
           placeholder={isGlobal ? 'City, Country' : 'City, State'}
           value={searchInput}
           onChange={handleChange}
-          className="block"
+          className="block text-black"
         />
         <button type="submit" className="block">
           <img src={search} alt="search" className="w-8" />

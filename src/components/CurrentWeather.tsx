@@ -43,16 +43,7 @@ const CurrentWeather: React.FC<Props> = ({
   }, [forecasts, today, tomorrow, setWeatherData]);
 
   return (
-    <div className="text-center mb-12">
-      <div>{weatherData.weather?.description}</div>
-      <div className="flex flex-row justify-center items-center">
-        <div className="text-6xl">{useFahrenheit(weatherData.temp)}&#176;</div>
-        <div>
-          <div>{useFahrenheit(todaysForecast?.max_temp)}&#176;</div>
-          <hr />
-          <div>{useFahrenheit(todaysForecast?.min_temp)}&#176;</div>
-        </div>
-      </div>
+    <div className="text-center mb-6">
       <div>
         {useDayOfWeek(
           getDay(new Date(weatherData.ob_time?.split(' ')[0])),
@@ -64,6 +55,23 @@ const CurrentWeather: React.FC<Props> = ({
             new Date(weatherData.ob_time?.split(' ')[0].replace(/-/g, '/')),
             'MMM d'
           )}
+      </div>
+      <div className="flex flex-row justify-center items-center">
+        <div className="border-gray-300 border-2 inline-block rounded-full p-1 shadow-xl">
+          {useFahrenheit(todaysForecast?.min_temp)}&#176;
+        </div>
+        <div className="bg-white bg-opacity-25 border-gray-100 border shadow-xl inline-block rounded-full w-40 py-4 mx-4">
+          <div className="text-6xl transform translate-x-2">
+            {useFahrenheit(weatherData.temp)}
+            <span>&#176;</span>
+          </div>
+          <div className="transform -translate-y-5">
+            {weatherData.weather?.description}
+          </div>
+        </div>
+        <div className="border-gray-300 border-2 inline-block rounded-full p-1 shadow-xl">
+          {useFahrenheit(todaysForecast?.max_temp)}&#176;
+        </div>
       </div>
     </div>
   );
