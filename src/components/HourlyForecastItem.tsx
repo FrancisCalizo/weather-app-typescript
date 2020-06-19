@@ -1,5 +1,5 @@
 import React from 'react';
-import { format } from 'date-fns';
+import { format, getHours } from 'date-fns';
 
 import useFahrenheit from './hooks/useFahrenheit';
 import useWeatherIcon from './hooks/useWeatherIcon';
@@ -15,7 +15,10 @@ const HourlyForecastItem: React.FC<Props> = ({ hourlyForecast }) => {
       <div>
         <img
           className="w-20"
-          src={useWeatherIcon(hourlyForecast.weather.code)}
+          src={useWeatherIcon(
+            hourlyForecast.weather.code,
+            getHours(new Date(hourlyForecast.timestamp_local))
+          )}
           alt={hourlyForecast.weather.description}
         />
       </div>

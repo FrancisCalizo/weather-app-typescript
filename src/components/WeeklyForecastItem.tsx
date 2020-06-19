@@ -21,7 +21,7 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
       </div>
       <div className="w-1/3 ">
         <img
-          src={useWeatherIcon(forecast?.weather.code)}
+          src={useWeatherIcon(forecast?.weather.code, 12)}
           alt={forecast?.weather.description}
           className="w-10 mx-auto"
         />

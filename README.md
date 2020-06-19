@@ -35,3 +35,5 @@
 - String.substring() is considered legacy (basically deprecated) .. use slice() instead - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr
 
 - Format Time in "12PM" format using the format object in Date-FNS - https://date-fns.org/v2.14.0/docs/format
+
+- Figure out what hour it is with the getHours method in Date-FNS - https://date-fns.org/v2.14.0/docs/getHours
