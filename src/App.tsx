@@ -31,6 +31,10 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [coordinates, setCoordinates] = useState(initialCoordinates);
   const [useLocation, setUseLocation] = useState(false);
+  const [background, setBackground] = useState({
+    backgroundColor: '#fff',
+    backgroundImage: 'none',
+  });
 
   // Get Today's Date
   useEffect(() => {
@@ -136,11 +140,34 @@ function App() {
     }
   }, [location, searchCity, useLocation]);
 
+  // Get Background Color
+  useEffect(() => {
+    let code = Number(weatherData?.weather?.code);
+    console.log(code);
+    switch (true) {
+      case code < 300:
+        setBackground({ backgroundColor: '#fff', backgroundImage: 'none' });
+        break;
+      case code === 800 || code === 801:
+        setBackground({
+          backgroundColor: '#f0e756',
+          backgroundImage: 'linear-gradient(225deg, #f0e756 0%, #ff8300 69%)',
+        });
+        break;
+      case code === 802 || code === 803 || code === 804:
+        setBackground({
+          backgroundColor: '#565555',
+          backgroundImage: 'linear-gradient(45deg, #565555 14%, #9e9e9e 55%)',
+        });
+        break;
+    }
+  }, [weatherData, searchCity]);
+
   if (loading) {
     return <h2>Loading...</h2>;
   } else {
     return (
-      <div className="max-w-xl mx-auto px-4">
+      <div className="max-w-xl mx-auto mx-4" style={background}>
         <Navbar
           setCoordinates={setCoordinates}
           setUseLocation={setUseLocation}
@@ -150,14 +177,16 @@ function App() {
           searchInput={searchInput}
           setSearchInput={setSearchInput}
         />
-        <Location location={location} isGlobal={isGlobal} />
-        <CurrentWeather
-          weatherData={weatherData}
-          forecasts={forecasts}
-          today={today}
-          tomorrow={tomorrow}
-          setWeatherData={setWeatherData}
-        />
+        <div>
+          <Location location={location} isGlobal={isGlobal} />
+          <CurrentWeather
+            weatherData={weatherData}
+            forecasts={forecasts}
+            today={today}
+            tomorrow={tomorrow}
+            setWeatherData={setWeatherData}
+          />
+        </div>
         <HourlyForecast hourlyForecasts={hourlyForecasts} />
         <WeeklyForecast forecasts={forecasts} />
       </div>
