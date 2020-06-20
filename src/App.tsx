@@ -149,9 +149,30 @@ function App() {
 
     switch (true) {
       case code < 300:
-        setBackground({ backgroundColor: '#fff', backgroundImage: 'none' });
+        setBackground({
+          backgroundColor: '#8383e6',
+          backgroundImage: 'linear-gradient(0deg, #8383e6 20%, #273c75 82%)',
+        });
         break;
-      case code === 800 || code === 801:
+      case code < 600 || code === 900:
+        setBackground({
+          backgroundColor: '#4834d4',
+          backgroundImage: 'linear-gradient(0deg, #4834d4 20%, #273c75 82%)',
+        });
+        break;
+      case code < 700:
+        setBackground({
+          backgroundColor: '#CCEBF8',
+          backgroundImage: 'linear-gradient(0deg, #CCEBF8 32%, #BAE2FF 57%)',
+        });
+        break;
+      case code < 800:
+        setBackground({
+          backgroundColor: '#878787',
+          backgroundImage: 'linear-gradient(0deg, #878787 10%, #514D4D 57%)',
+        });
+        break;
+      case code === 800 || code === 801 || code === 802:
         if (hour >= sunrise && hour < sunset) {
           setBackground({
             backgroundColor: '#148af0',
@@ -165,12 +186,17 @@ function App() {
           });
         }
         break;
-      case code === 802 || code === 803 || code === 804:
+      case code === 803 || code === 804:
         setBackground({
-          backgroundColor: '#878787;',
-          backgroundImage: 'linear-gradient(0deg, #878787 10%, #2D2B2B 57%)',
+          backgroundColor: '#878787',
+          backgroundImage: 'linear-gradient(0deg, #878787 10%, #514D4D 57%)',
         });
         break;
+      default:
+        setBackground({
+          backgroundColor: '#148af0',
+          backgroundImage: 'linear-gradient(180deg, #148af0 11%, #b4d2e4 82%)',
+        });
     }
   }, [weatherData, searchCity, hourlyForecasts]);
 
