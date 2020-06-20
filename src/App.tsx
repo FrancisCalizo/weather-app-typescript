@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { format, add } from 'date-fns';
+import { format, add, getHours } from 'date-fns';
 
 import Navbar from './components/Navbar';
 import CurrentWeather from './components/CurrentWeather';
@@ -142,26 +142,37 @@ function App() {
 
   // Get Background Color
   useEffect(() => {
+    const sunrise = 7;
+    const sunset = 20;
     let code = Number(weatherData?.weather?.code);
-    console.log(code);
+    let hour = getHours(new Date(hourlyForecasts[0]?.timestamp_local));
+
     switch (true) {
       case code < 300:
         setBackground({ backgroundColor: '#fff', backgroundImage: 'none' });
         break;
       case code === 800 || code === 801:
-        setBackground({
-          backgroundColor: '#f0e756',
-          backgroundImage: 'linear-gradient(225deg, #f0e756 0%, #ff8300 69%)',
-        });
+        if (hour >= sunrise && hour < sunset) {
+          setBackground({
+            backgroundColor: '#148af0',
+            backgroundImage:
+              'linear-gradient(180deg, #148af0 11%, #b4d2e4 82%)',
+          });
+        } else {
+          setBackground({
+            backgroundColor: '#436498',
+            backgroundImage: 'linear-gradient(0deg, #436498 10%, #23354c 71%)',
+          });
+        }
         break;
       case code === 802 || code === 803 || code === 804:
         setBackground({
-          backgroundColor: '#565555',
-          backgroundImage: 'linear-gradient(45deg, #565555 14%, #9e9e9e 55%)',
+          backgroundColor: '#878787;',
+          backgroundImage: 'linear-gradient(0deg, #878787 10%, #2D2B2B 57%)',
         });
         break;
     }
-  }, [weatherData, searchCity]);
+  }, [weatherData, searchCity, hourlyForecasts]);
 
   if (loading) {
     return <h2>Loading...</h2>;
@@ -185,6 +196,7 @@ function App() {
             today={today}
             tomorrow={tomorrow}
             setWeatherData={setWeatherData}
+            hourlyForecasts={hourlyForecasts}
           />
         </div>
         <HourlyForecast hourlyForecasts={hourlyForecasts} />

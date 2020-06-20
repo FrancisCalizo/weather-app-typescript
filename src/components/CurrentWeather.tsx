@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { getDay, format } from 'date-fns';
+import { getDay, format, getHours } from 'date-fns';
 
 import useDayOfWeek from './hooks/useDayOfWeek';
 import useFahrenheit from './hooks/useFahrenheit';
+import useWeatherIcon from './hooks/useWeatherIcon';
 
 interface Props {
   weatherData: WeatherData;
@@ -10,6 +11,7 @@ interface Props {
   today: string;
   tomorrow: string;
   setWeatherData: (weatherData: WeatherData) => void;
+  hourlyForecasts: IHourlyForecast[];
 }
 
 const CurrentWeather: React.FC<Props> = ({
@@ -18,6 +20,7 @@ const CurrentWeather: React.FC<Props> = ({
   today,
   tomorrow,
   setWeatherData,
+  hourlyForecasts,
 }) => {
   const [todaysForecast, setTodaysForecast] = useState<Forecast>(
     {} as Forecast
@@ -56,7 +59,18 @@ const CurrentWeather: React.FC<Props> = ({
             'MMM d'
           )}
       </div>
-      <div className="flex flex-row justify-center items-center">
+      <div className="mb-3">
+        <img
+          className="w-16 mx-auto"
+          src={useWeatherIcon(
+            Number(weatherData.weather?.code),
+            getHours(new Date(hourlyForecasts[0]?.timestamp_local))
+          )}
+          alt={weatherData.weather?.description}
+        />
+      </div>
+      <hr className="w-12 mx-auto" />
+      <div className="flex flex-row justify-center items-center mt-4">
         <div className="border-gray-300 border-2 inline-block rounded-full p-1 shadow-xl">
           {useFahrenheit(todaysForecast?.min_temp)}&#176;
         </div>
