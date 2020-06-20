@@ -32,19 +32,21 @@ const SearchBar: React.FC<Props> = ({
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="flex flex-row items-center">
-        <input
-          type="text"
-          placeholder={isGlobal ? 'City, Country' : 'City, State'}
-          value={searchInput}
-          onChange={handleChange}
-          className="block text-black"
-        />
-        <button type="submit" className="block">
-          <img src={search} alt="search" className="w-8" />
-        </button>
-      </form>
+    <div className="w-1/2 flex justify-center">
+      <div>
+        <form onSubmit={handleSubmit} className="flex flex-row items-center">
+          <input
+            type="text"
+            placeholder={isGlobal ? 'City, Country' : 'City, State'}
+            value={searchInput}
+            onChange={handleChange}
+            className="block text-black"
+          />
+          {/* <button type="submit" className="block">
+            <img src={search} alt="search" className="w-8" />
+          </button> */}
+        </form>
+      </div>
     </div>
   );
 };

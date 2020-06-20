@@ -11,8 +11,8 @@ interface Props {
 
 const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
   return (
-    <div className="flex flex-row justify-between items-center text-base xs:text-base bg-white text-black">
-      <div className="w-1/3 text-left pl-4">
+    <div className="flex flex-row justify-between items-center text-base xs:text-base">
+      <div className="w-1/3 text-left pl-3">
         <span>
           {useDayOfWeek(getDay(new Date(forecast?.datetime!)), 'long')}
         </span>
@@ -26,9 +26,11 @@ const WeeklyForecastItem: React.FC<Props> = ({ forecast }) => {
           className="w-10 mx-auto"
         />
       </div>
-      <div className="w-1/3 text-right pr-4">
+      <div className="w-1/3 text-right pr-3">
         {useFahrenheit(forecast!.max_temp)}&#176;{'  '}
-        {useFahrenheit(forecast!.min_temp)}&#176;
+        <span className="text-gray-600 ml-1">
+          {useFahrenheit(forecast!.min_temp)}&#176;
+        </span>
       </div>
     </div>
   );

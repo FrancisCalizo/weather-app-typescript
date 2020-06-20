@@ -19,7 +19,7 @@ const WeeklyForecast: React.FC<Props> = ({ forecasts }) => {
   }, [forecasts]);
 
   return (
-    <div>
+    <div className="mx-2 mt-2 rounded-lg bg-white text-black py-2 shadow-2x border-2 border-gray-300 opacity-90">
       {weeklyForecasts?.map((forecast, idx) => (
         <WeeklyForecastItem key={idx} forecast={forecast} />
       ))}

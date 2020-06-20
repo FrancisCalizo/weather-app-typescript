@@ -40,10 +40,9 @@ const GeoLocation: React.FC<Props> = ({ setCoordinates, setUseLocation }) => {
   };
 
   return (
-    <div>
+    <div className="w-1/4">
       <button onClick={handleClick}>
         <img src={location} alt="location" className="w-8 inline" />
-        Current
       </button>
     </div>
   );
