@@ -8,7 +8,6 @@ interface Props {
 const Location: React.FC<Props> = ({ location, isGlobal }) => {
   return (
     <div>
-      {new Date().toTimeString()}
       <h1 className="text-2xl xs:text-3xl font-bold text-center capitalize mt-8">{`${
         location.city
       }, ${isGlobal ? location.country : location.state}`}</h1>
