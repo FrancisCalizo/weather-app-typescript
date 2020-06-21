@@ -23,6 +23,7 @@ const HourlyForecastItem: React.FC<Props> = ({ hourlyForecast }) => {
         />
       </div>
       <div>{useFahrenheit(hourlyForecast.temp)}&#176;</div>
+      {hourlyForecast.timestamp_local}
     </div>
   );
 };
