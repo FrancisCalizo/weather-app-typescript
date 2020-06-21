@@ -37,3 +37,5 @@
 - Format Time in "12PM" format using the format object in Date-FNS - https://date-fns.org/v2.14.0/docs/format
 
 - Figure out what hour it is with the getHours method in Date-FNS - https://date-fns.org/v2.14.0/docs/getHours
+
+- Use Tailwind Styles in CSS stylesheet - https://tailwindcss.com/docs/adding-base-styles/

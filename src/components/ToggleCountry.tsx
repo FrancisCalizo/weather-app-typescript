@@ -1,6 +1,9 @@
 import React from 'react';
 import styles from '../assets/ToggleCountry.module.css';
 
+import usa from '../images/usa.png';
+import globe from '../images/globe.png';
+
 interface Props {
   isGlobal: boolean;
   setIsGlobal: (isGlobal: boolean) => void;
@@ -36,12 +39,16 @@ const ToggleCountry: React.FC<Props> = ({
               onChange={handleChange}
             />
 
-            <div className="flex justify-around items-center toggle__line w-18 h-6 bg-gray-400 rounded-full shadow-inner">
-              <div className="text-sm text-gray-300">US</div>
-              <div className="text-sm text-gray-300">ALL</div>
+            <div className="flex justify-around items-center toggle__line w-12 h-6 bg-gray-400 rounded-full shadow-inner">
+              <div className="text-sm text-gray-300">
+                <img src={usa} alt="usa" className="w-4" />
+              </div>
+              <div className="text-sm text-gray-300">
+                <img src={globe} alt="globe" className="w-4" />
+              </div>
             </div>
             <div
-              className={`${styles.toggle__dot} absolute w-10 h-6 bg-white rounded-full shadow inset-y-0 left-0`}
+              className={`${styles.toggle__dot} absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0`}
             ></div>
           </div>
           <div className="ml-3 text-gray-700 font-medium"></div>

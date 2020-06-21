@@ -1,7 +1,5 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 
-import search from '../images/search.png';
-
 interface Props {
   searchInput: string;
   setSearchInput: (input: string) => void;
@@ -40,7 +38,7 @@ const SearchBar: React.FC<Props> = ({
             placeholder={isGlobal ? 'City, Country' : 'City, State'}
             value={searchInput}
             onChange={handleChange}
-            className="block text-black"
+            className="block text-black rounded-full px-2 py-1 shadow-2xl"
           />
           {/* <button type="submit" className="block">
             <img src={search} alt="search" className="w-8" />
