@@ -39,7 +39,7 @@ const ToggleCountry: React.FC<Props> = ({
               onChange={handleChange}
             />
 
-            <div className="flex justify-around items-center toggle__line w-12 h-6 bg-gray-400 rounded-full shadow-inner">
+            <div className="flex justify-around items-center toggle__line w-12 h-6 bg-gray-400 rounded-full shadow-2xl">
               <div className="text-sm text-gray-300">
                 <img src={usa} alt="usa" className="w-4" />
               </div>
