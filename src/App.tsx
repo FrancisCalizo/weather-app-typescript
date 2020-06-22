@@ -33,7 +33,7 @@ function App() {
   const [coordinates, setCoordinates] = useState(initialCoordinates);
   const [useLocation, setUseLocation] = useState(false);
   const [background, setBackground] = useState({
-    transition: 'backgroundColor 1000ms ease-in-out',
+    transition: 'all 2000ms ease-in-out',
     backgroundColor: '#fff',
     backgroundImage: 'none',
   });
@@ -41,8 +41,8 @@ function App() {
 
   const transitionStyles = {
     exiting: { opacity: 0 },
-    exited: { opacity: 0.5 },
-    entering: { opacity: 0.5 },
+    exited: { opacity: 1 },
+    entering: { opacity: 0 },
     entered: { opacity: 1 },
     unmounted: { opacity: 1 },
   };
@@ -250,7 +250,6 @@ function App() {
               setInProp={setInProp}
             />
             <div>
-              {state}
               <Location location={location} isGlobal={isGlobal} />
               <CurrentWeather
                 weatherData={weatherData}
