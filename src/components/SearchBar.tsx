@@ -6,6 +6,7 @@ interface Props {
   setSearchCity: (input: string) => void;
   isGlobal: boolean;
   setUseLocation: (bool: boolean) => void;
+  setInProp: (input: boolean) => void;
 }
 
 const SearchBar: React.FC<Props> = ({
@@ -14,6 +15,7 @@ const SearchBar: React.FC<Props> = ({
   setSearchCity,
   isGlobal,
   setUseLocation,
+  setInProp,
 }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
@@ -23,6 +25,7 @@ const SearchBar: React.FC<Props> = ({
     e.preventDefault();
 
     if (searchInput) {
+      setInProp(false);
       setUseLocation(false);
       setSearchCity(searchInput);
       setSearchInput('');

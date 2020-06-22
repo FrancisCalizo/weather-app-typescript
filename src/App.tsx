@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { format, add, getHours } from 'date-fns';
+import { Transition } from 'react-transition-group';
 
 import Navbar from './components/Navbar';
 import CurrentWeather from './components/CurrentWeather';
@@ -32,9 +33,19 @@ function App() {
   const [coordinates, setCoordinates] = useState(initialCoordinates);
   const [useLocation, setUseLocation] = useState(false);
   const [background, setBackground] = useState({
+    transition: 'backgroundColor 1000ms ease-in-out',
     backgroundColor: '#fff',
     backgroundImage: 'none',
   });
+  const [inProp, setInProp] = useState(false);
+
+  const transitionStyles = {
+    exiting: { opacity: 0 },
+    exited: { opacity: 0.5 },
+    entering: { opacity: 0.5 },
+    entered: { opacity: 1 },
+    unmounted: { opacity: 1 },
+  };
 
   // Get Today's Date
   useEffect(() => {
@@ -149,88 +160,112 @@ function App() {
 
     switch (true) {
       case code < 300:
+        setInProp(true);
         setBackground({
+          ...background,
           backgroundColor: '#8383e6',
           backgroundImage: 'linear-gradient(0deg, #8383e6 20%, #273c75 82%)',
         });
         break;
       case code < 600 || code === 900:
+        setInProp(true);
         setBackground({
+          ...background,
           backgroundColor: '#4834d4',
           backgroundImage: 'linear-gradient(0deg, #4834d4 20%, #273c75 82%)',
         });
         break;
       case code < 700:
+        setInProp(true);
         setBackground({
+          ...background,
           backgroundColor: '#CCEBF8',
           backgroundImage: 'linear-gradient(0deg, #CCEBF8 32%, #BAE2FF 57%)',
         });
         break;
       case code < 800:
+        setInProp(true);
         setBackground({
+          ...background,
           backgroundColor: '#878787',
           backgroundImage: 'linear-gradient(0deg, #878787 10%, #514D4D 57%)',
         });
         break;
       case code === 800 || code === 801 || code === 802:
         if (hour >= sunrise && hour < sunset) {
+          setInProp(true);
           setBackground({
+            ...background,
             backgroundColor: '#148af0',
             backgroundImage:
               'linear-gradient(180deg, #148af0 11%, #b4d2e4 82%)',
           });
         } else {
+          setInProp(true);
           setBackground({
+            ...background,
             backgroundColor: '#436498',
             backgroundImage: 'linear-gradient(0deg, #436498 10%, #23354c 71%)',
           });
         }
         break;
       case code === 803 || code === 804:
+        setInProp(true);
         setBackground({
+          ...background,
           backgroundColor: '#878787',
           backgroundImage: 'linear-gradient(0deg, #878787 10%, #514D4D 57%)',
         });
         break;
       default:
+        setInProp(true);
         setBackground({
+          ...background,
           backgroundColor: '#148af0',
           backgroundImage: 'linear-gradient(180deg, #148af0 11%, #b4d2e4 82%)',
         });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weatherData, searchCity, hourlyForecasts]);
 
   if (loading) {
     return <h2>Loading...</h2>;
   } else {
     return (
-      <div
-        className="max-w-lg mx-auto mx-4 text-white pb-2 "
-        style={background}
-      >
-        <Navbar
-          setCoordinates={setCoordinates}
-          setUseLocation={setUseLocation}
-          isGlobal={isGlobal}
-          setIsGlobal={setIsGlobal}
-          setSearchCity={setSearchCity}
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-        />
-        <div>
-          <Location location={location} isGlobal={isGlobal} />
-          <CurrentWeather
-            weatherData={weatherData}
-            forecasts={forecasts}
-            today={today}
-            tomorrow={tomorrow}
-            setWeatherData={setWeatherData}
-            hourlyForecasts={hourlyForecasts}
-          />
-        </div>
-        <HourlyForecast hourlyForecasts={hourlyForecasts} />
-        <WeeklyForecast forecasts={forecasts} />
-      </div>
+      <Transition in={inProp} timeout={500}>
+        {(state) => (
+          <div
+            className="max-w-lg mx-auto mx-4 text-white pb-2 "
+            style={{ ...background, ...transitionStyles[state] }}
+          >
+            <Navbar
+              setCoordinates={setCoordinates}
+              setUseLocation={setUseLocation}
+              isGlobal={isGlobal}
+              setIsGlobal={setIsGlobal}
+              setSearchCity={setSearchCity}
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              setInProp={setInProp}
+            />
+            <div>
+              {state}
+              <Location location={location} isGlobal={isGlobal} />
+              <CurrentWeather
+                weatherData={weatherData}
+                forecasts={forecasts}
+                today={today}
+                tomorrow={tomorrow}
+                setWeatherData={setWeatherData}
+                hourlyForecasts={hourlyForecasts}
+              />
+            </div>
+            <HourlyForecast hourlyForecasts={hourlyForecasts} />
+            <WeeklyForecast forecasts={forecasts} />
+          </div>
+        )}
+      </Transition>
     );
   }
 }

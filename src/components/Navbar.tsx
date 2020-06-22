@@ -12,6 +12,7 @@ interface Props {
   setSearchCity: (input: string) => void;
   searchInput: string;
   setSearchInput: (input: string) => void;
+  setInProp: (input: boolean) => void;
 }
 
 const Navbar: React.FC<Props> = ({
@@ -22,6 +23,7 @@ const Navbar: React.FC<Props> = ({
   setSearchCity,
   searchInput,
   setSearchInput,
+  setInProp,
 }) => {
   return (
     <nav className="flex flex-row justify-between items-center pt-3">
@@ -35,6 +37,7 @@ const Navbar: React.FC<Props> = ({
         setSearchCity={setSearchCity}
         isGlobal={isGlobal}
         setUseLocation={setUseLocation}
+        setInProp={setInProp}
       />
       <ToggleCountry
         isGlobal={isGlobal}
