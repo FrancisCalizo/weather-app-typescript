@@ -22,11 +22,11 @@ const HourlyForecastItem: React.FC<Props> = ({ hourlyForecast }) => {
           alt={hourlyForecast.weather.description}
         />
       </div>
-      {/* <div>{useFahrenheit(hourlyForecast.temp)}&#176;</div>
-      {hourlyForecast.timestamp_local.slice(11)}
-      <br />
+      <div>{useFahrenheit(hourlyForecast.temp)}&#176;</div>
+      {/* {hourlyForecast.timestamp_local.slice(11)} */}
+      {/* <br />
       {new Date(hourlyForecast.timestamp_local).toLocaleTimeString()}
-      <br /> */}
+      <br />  */}
       {format(
         new Date(
           2020,
