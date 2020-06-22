@@ -9,6 +9,7 @@ interface Props {
 }
 
 const HourlyForecastItem: React.FC<Props> = ({ hourlyForecast }) => {
+  console.log(hourlyForecast.timestamp_utc, hourlyForecast.timestamp_local);
   return (
     <div className="flex flex-col text-center text-sm xs:text-base w-1/6">
       <div>{format(new Date(hourlyForecast.timestamp_local), 'haa')}</div>
@@ -25,7 +26,7 @@ const HourlyForecastItem: React.FC<Props> = ({ hourlyForecast }) => {
       <div>{useFahrenheit(hourlyForecast.temp)}&#176;</div>
       {hourlyForecast.timestamp_local.slice(11)}
       <br></br>
-      {new Date(hourlyForecast.timestamp_local).toLocaleTimeString()}
+      {new Date(hourlyForecast.timestamp_utc).toLocaleTimeString()}
     </div>
   );
 };
