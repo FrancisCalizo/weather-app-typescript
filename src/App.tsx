@@ -233,11 +233,11 @@ function App() {
     return <h2>Loading...</h2>;
   } else {
     return (
-      <div className="h-screen flex flex-col justify-center sm:bg-gray-400">
+      <div className="min-h-screen flex flex-col justify-center sm:bg-gray-400">
         <Transition in={inProp} timeout={600}>
           {(state) => (
             <div
-              className="max-w-lg w-full mx-auto mx-4 text-white pb-2 rounded-lg md:border-2 md:border-black"
+              className="max-w-lg w-full h-100 mx-auto mx-4 text-white pb-2 rounded-lg md:border-2 md:border-black"
               style={{ ...background, ...transitionStyles[state] }}
             >
               <Navbar
