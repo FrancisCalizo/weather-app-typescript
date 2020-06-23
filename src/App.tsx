@@ -233,38 +233,40 @@ function App() {
     return <h2>Loading...</h2>;
   } else {
     return (
-      <Transition in={inProp} timeout={600}>
-        {(state) => (
-          <div
-            className="max-w-lg mx-auto mx-4 text-white pb-2 "
-            style={{ ...background, ...transitionStyles[state] }}
-          >
-            <Navbar
-              setCoordinates={setCoordinates}
-              setUseLocation={setUseLocation}
-              isGlobal={isGlobal}
-              setIsGlobal={setIsGlobal}
-              setSearchCity={setSearchCity}
-              searchInput={searchInput}
-              setSearchInput={setSearchInput}
-              setInProp={setInProp}
-            />
-            <div>
-              <Location location={location} isGlobal={isGlobal} />
-              <CurrentWeather
-                weatherData={weatherData}
-                forecasts={forecasts}
-                today={today}
-                tomorrow={tomorrow}
-                setWeatherData={setWeatherData}
-                hourlyForecasts={hourlyForecasts}
+      <div className="h-screen flex flex-col justify-center sm:bg-gray-400">
+        <Transition in={inProp} timeout={600}>
+          {(state) => (
+            <div
+              className="max-w-lg w-full mx-auto mx-4 text-white pb-2 rounded-lg md:border-2 md:border-black"
+              style={{ ...background, ...transitionStyles[state] }}
+            >
+              <Navbar
+                setCoordinates={setCoordinates}
+                setUseLocation={setUseLocation}
+                isGlobal={isGlobal}
+                setIsGlobal={setIsGlobal}
+                setSearchCity={setSearchCity}
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+                setInProp={setInProp}
               />
+              <div>
+                <Location location={location} isGlobal={isGlobal} />
+                <CurrentWeather
+                  weatherData={weatherData}
+                  forecasts={forecasts}
+                  today={today}
+                  tomorrow={tomorrow}
+                  setWeatherData={setWeatherData}
+                  hourlyForecasts={hourlyForecasts}
+                />
+              </div>
+              <HourlyForecast hourlyForecasts={hourlyForecasts} />
+              <WeeklyForecast forecasts={forecasts} />
             </div>
-            <HourlyForecast hourlyForecasts={hourlyForecasts} />
-            <WeeklyForecast forecasts={forecasts} />
-          </div>
-        )}
-      </Transition>
+          )}
+        </Transition>
+      </div>
     );
   }
 }
