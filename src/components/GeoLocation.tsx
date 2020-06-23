@@ -5,9 +5,14 @@ import location from '../images/location.png';
 interface Props {
   setCoordinates: (coordinates: ICoordinates) => void;
   setUseLocation: (bool: boolean) => void;
+  setInProp: (input: boolean) => void;
 }
 
-const GeoLocation: React.FC<Props> = ({ setCoordinates, setUseLocation }) => {
+const GeoLocation: React.FC<Props> = ({
+  setCoordinates,
+  setUseLocation,
+  setInProp,
+}) => {
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
 
@@ -33,6 +38,7 @@ const GeoLocation: React.FC<Props> = ({ setCoordinates, setUseLocation }) => {
     };
 
     if (navigator.geolocation) {
+      setInProp(false);
       navigator.geolocation.getCurrentPosition(getPos, posError);
     } else {
       console.error('Geolocation is not supported by this browser.');

@@ -233,7 +233,7 @@ function App() {
     return <h2>Loading...</h2>;
   } else {
     return (
-      <Transition in={inProp} timeout={500}>
+      <Transition in={inProp} timeout={600}>
         {(state) => (
           <div
             className="max-w-lg mx-auto mx-4 text-white pb-2 "

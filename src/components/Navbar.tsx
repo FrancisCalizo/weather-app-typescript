@@ -30,6 +30,7 @@ const Navbar: React.FC<Props> = ({
       <GeoLocation
         setCoordinates={setCoordinates}
         setUseLocation={setUseLocation}
+        setInProp={setInProp}
       />
       <SearchBar
         searchInput={searchInput}
