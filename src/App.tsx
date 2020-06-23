@@ -9,6 +9,7 @@ import WeeklyForecast from './components/WeeklyForecast';
 
 import { initialLocation, initialCoordinates, initialSearchCity } from './data';
 import HourlyForecast from './components/HourlyForecast';
+import LoadingGif from './images/loading.gif';
 
 function App() {
   const [location, setLocation] = useState<ILocation>(
@@ -230,7 +231,11 @@ function App() {
   }, [weatherData, searchCity, hourlyForecasts]);
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return (
+      <div className="flex flex-row justify-center items-center text-center min-h-screen">
+        <img src={LoadingGif} alt="loading-gif" className="block" />
+      </div>
+    );
   } else {
     return (
       <div className="min-h-screen flex flex-col justify-center sm:bg-gray-400">
