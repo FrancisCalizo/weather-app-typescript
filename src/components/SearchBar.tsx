@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent } from 'react';
+import React, { ChangeEvent, FormEvent, FocusEvent } from 'react';
 
 interface Props {
   searchInput: string;
@@ -21,7 +21,9 @@ const SearchBar: React.FC<Props> = ({
     setSearchInput(e.target.value);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    e: FormEvent<HTMLFormElement> | FocusEvent<HTMLInputElement>
+  ) => {
     e.preventDefault();
 
     if (searchInput) {
@@ -41,6 +43,7 @@ const SearchBar: React.FC<Props> = ({
             placeholder={isGlobal ? 'City, Country' : 'City, State'}
             value={searchInput}
             onChange={handleChange}
+            onBlur={handleSubmit}
             className="block text-black rounded-full px-2 py-1 shadow-2xl border border-gray-600"
           />
           {/* <button type="submit" className="block">
