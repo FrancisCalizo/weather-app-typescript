@@ -41,3 +41,5 @@
 - Use Tailwind Styles in CSS stylesheet - https://tailwindcss.com/docs/adding-base-styles/
 
 - Issues with Mobile browsers using hourly forecasts that were in Pacific Time instead of the current timezone. In HourForecastItem component, I was using use Date() function with the provided timestamp_local property and it would return 3-4 hours earlier time on mobile browsers. Found a workaround using the format on the bottom of this page https://date-fns.org/v2.14.0/docs/getHours. Using this format, the hours stays true to whatever the API is providing instead of getting the 3-4 hours on mobile. Weird.
+
+- Simulate slow connections via network tab in developer tools - https://helpdeskgeek.com/networking/simulate-slow-internet-connection-testing/
