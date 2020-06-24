@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface Props {
   location: ILocation;
@@ -6,11 +6,23 @@ interface Props {
 }
 
 const Location: React.FC<Props> = ({ location, isGlobal }) => {
+  const [display, setDisplay] = useState('');
+
+  useEffect(() => {
+    if (isGlobal) {
+      setDisplay(`${location.city}, ${location.country}`);
+    } else {
+      setDisplay(`${location.city}, ${location.state}`);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
   return (
     <div>
-      <h1 className="text-2xl xs:text-3xl font-bold text-center capitalize mt-8">{`${
-        location.city
-      }, ${isGlobal ? location.country : location.state}`}</h1>
+      <h1 className="text-2xl xs:text-3xl font-bold text-center capitalize mt-8">
+        {display}
+      </h1>
     </div>
   );
 };
