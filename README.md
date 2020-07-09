@@ -1,3 +1,7 @@
+# WeatherCast
+
+A mobile-first weather forecast application utilizing React.js, TypeScript, and TailwindCSS.
+
 ## Useful Articles
 
 - Use of Date-fns library instead of moment.js (Much smaller library for performance) - https://date-fns.org/v2.14.0/docs/format
