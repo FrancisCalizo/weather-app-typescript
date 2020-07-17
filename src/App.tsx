@@ -25,9 +25,7 @@ function App() {
   const [tomorrow, setTomorrow] = useState('');
   const [weatherData, setWeatherData] = useState({} as WeatherData);
   const [forecasts, setForecasts] = useState([] as Forecasts);
-  const [hourlyForecasts, setHourlyForecasts] = useState(
-    [] as IHourlyForecast[]
-  );
+  const [hourlyForecasts, setHourlyForecasts] = useState<IHourlyForecast[]>([]);
   const [hours] = useState(6);
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
