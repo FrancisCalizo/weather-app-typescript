@@ -49,3 +49,5 @@ A mobile-first weather forecast application utilizing React.js, TypeScript, and 
 - Simulate slow connections via network tab in developer tools - https://helpdeskgeek.com/networking/simulate-slow-internet-connection-testing/
 
 - Was having an isssue when toggling the US/Global Button. I wanted to display city/state when it was US and city/country when it was global. Because the fetching of data was asynchronous and took a while, it would change from state to country and vice-versa before gathering all the data on render, resulting in seeing the state for global. This was fixed with a useEffect in the Location component with a location state as a dependency and having a "display" as local state. I tried many other things like trying to use callbacks with no avail.
+
+- Added two API Keys for request issues.
