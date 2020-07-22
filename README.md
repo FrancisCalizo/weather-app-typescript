@@ -2,6 +2,14 @@
 
 A mobile-first weather forecast application utilizing React.js, TypeScript, and TailwindCSS.
 
+<br>
+<img src="./src/images/screenshots/miami" width="100%">
+<br>
+<img src="./src/images/screenshots/boston" width="100%">
+<br>
+<img src="./src/images/screenshots/manila" width="100%">
+<br>
+
 ## Useful Articles
 
 - Use of Date-fns library instead of moment.js (Much smaller library for performance) - https://date-fns.org/v2.14.0/docs/format
