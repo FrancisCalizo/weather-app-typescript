@@ -1,3 +1,5 @@
+# **** The link to this project domain is NOT working due to an expired API Key. If you would like to view this particular project, please let me know and I can request a new API Key to have the project link working again. ****
+
 # WeatherCast
 
 A mobile-first weather forecast application utilizing React.js, TypeScript, and TailwindCSS.
